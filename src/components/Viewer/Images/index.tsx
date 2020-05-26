@@ -1,6 +1,5 @@
 import React from 'react'
 import { MangaDetail } from '../../../types'
-import styles from './style.module.css'
 
 type Props = {
   images: MangaDetail['imgList']
@@ -8,9 +7,9 @@ type Props = {
 
 function Images({ images }: Props) {
   return (
-    <div className={styles.wrapper}>
-      <img src={images[0]} alt="" className={styles.img} loading="lazy" />
-      <img src={images[1]} alt="" className={styles.img} loading="lazy" />
+    <div className="flex flex-row-reverse">
+      <img src={images[0]} alt="" loading="lazy" />
+      <img src={images[1]} alt="" loading="lazy" />
     </div>
   )
 }

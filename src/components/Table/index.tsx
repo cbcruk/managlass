@@ -1,36 +1,90 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { Table } from 'antd'
-import { ColumnProps, TableProps } from 'antd/lib/table'
+import useHistoryTable from './useHistoryTable'
 import { MangaSummary } from '../../types'
+import Pagination from '../Pagination'
 
-type Props = Pick<TableProps<MangaSummary>, 'dataSource' | 'loading'>
+type Props = {
+  data: Partial<MangaSummary>[]
+  loading: boolean
+  pageCount: number
+}
 
-const columns: ColumnProps<MangaSummary>[] = [
+const columns = [
   {
-    title: '제목',
-    key: 'title',
-    render: (_, { id, title }) => {
-      return <Link to={`/manga/${id}`}>{title}</Link>
-    },
+    Header: 'A',
+    columns: [
+      { Header: '제목', accessor: 'title' },
+      { Header: '인기', accessor: 'popularPoint' },
+      { Header: '코멘트', accessor: 'comments' },
+      { Header: '좋아요', accessor: 'likes' },
+      { Header: '등록일', accessor: 'createdAt' },
+    ],
   },
-  { title: '인기', dataIndex: 'popularPoint', key: 'popularPoint' },
-  { title: '코멘트', dataIndex: 'comments', key: 'comments' },
-  { title: '좋아요', dataIndex: 'likes', key: 'likes' },
-  { title: '등록일', dataIndex: 'createdAt', key: 'createdAt' },
 ]
 
-function TableWrapper({ dataSource, loading }: Props) {
+function Table({ data, pageCount: controlledPageCount }: Props) {
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    prepareRow,
+    pageOptions,
+    canPreviousPage,
+    canNextPage,
+    pageCount,
+    gotoPage,
+    nextPage,
+    previousPage,
+    rows,
+    state: { pageIndex },
+  } = useHistoryTable({
+    columns,
+    data,
+    controlledPageCount,
+  })
+
   return (
-    <Table
-      columns={columns}
-      dataSource={dataSource}
-      rowKey={(record) => record.id}
-      tableLayout="auto"
-      pagination={false}
-      loading={loading}
-    />
+    <div>
+      <table {...getTableProps()} className="table-fixed">
+        <thead>
+          <tr>
+            {headerGroups[1].headers.map((column) => (
+              <th {...column.getHeaderProps()} className="px-4 py-2">
+                {column.render('Header')}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {rows.map((row) => {
+            prepareRow(row)
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map((cell) => {
+                  return (
+                    <td {...cell.getCellProps()} className="border px-4 py-2">
+                      {cell.render('Cell')}
+                    </td>
+                  )
+                })}
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+
+      <Pagination
+        current={pageIndex + 1}
+        total={pageOptions.length}
+        canPreviousPage={canPreviousPage}
+        canNextPage={canNextPage}
+        pageCount={pageCount}
+        gotoPage={gotoPage}
+        nextPage={nextPage}
+        previousPage={previousPage}
+      />
+    </div>
   )
 }
 
-export default TableWrapper
+export default Table

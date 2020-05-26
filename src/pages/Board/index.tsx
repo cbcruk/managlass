@@ -1,16 +1,23 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { usePaginatedQuery } from 'react-query'
-import { Layout, Space } from 'antd'
 import { getList } from '../../lib/rpc'
-import Pagination from '../../components/Pagination'
 import Table from '../../components/Table'
 import Alert from '../../components/Alert'
-import styles from './style.module.css'
 
 function Board() {
   const { page = '1' } = useParams()
   const { resolvedData, error, isFetching } = usePaginatedQuery(page, getList)
+
+  const data = (resolvedData?.items ?? []).map(
+    ({ title, popularPoint, comments, likes, createdAt }) => ({
+      title,
+      popularPoint,
+      comments,
+      likes,
+      createdAt,
+    })
+  )
 
   if (error) {
     return (
@@ -19,12 +26,13 @@ function Board() {
   }
 
   return (
-    <Layout.Content className={styles.wrapper}>
-      <Space direction="vertical" size={20}>
-        <Table dataSource={resolvedData?.items ?? []} loading={isFetching} />
-        <Pagination total={resolvedData?.total ?? 0} />
-      </Space>
-    </Layout.Content>
+    <div className="p-4">
+      <Table
+        data={data}
+        loading={isFetching}
+        pageCount={resolvedData?.total || 0}
+      />
+    </div>
   )
 }
 

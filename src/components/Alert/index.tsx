@@ -1,13 +1,17 @@
-import React from 'react'
-import { Alert } from 'antd'
-import { AlertProps } from 'antd/lib/alert'
+import * as React from 'react'
 
-type Props = Pick<AlertProps, 'message' | 'description'>
+type Props = {
+  message: string
+  description?: string
+}
 
-function AlertWrapper({ message, description }: Props) {
+function Alert({ message, description }: Props) {
   return (
-    <Alert type="error" message={message} description={description} showIcon />
+    <div>
+      <div>{message}</div>
+      {description && <div>{description}</div>}
+    </div>
   )
 }
 
-export default AlertWrapper
+export default Alert

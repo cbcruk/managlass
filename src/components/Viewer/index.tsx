@@ -1,5 +1,4 @@
 import React from 'react'
-import { PageHeader, Descriptions } from 'antd'
 import { MangaDetail } from '../../types'
 import Chapters from './Chapters'
 import Images from './Images'
@@ -18,18 +17,20 @@ function Viewer({
 
   return (
     <div>
-      <PageHeader
-        backIcon={false}
-        title={title}
-        subTitle={subTitle}
-        extra={[<Chapters key={0} chapters={chapters} />]}
-      >
-        <Descriptions size="small">
-          <Descriptions.Item label="인기">{popularPoint}</Descriptions.Item>
-          <Descriptions.Item label="코멘트">{comments}</Descriptions.Item>
-          <Descriptions.Item label="좋아요">{likes}</Descriptions.Item>
-        </Descriptions>
-      </PageHeader>
+      <div>
+        <div>
+          <div>{title}</div>
+          <div>{subTitle}</div>
+        </div>
+
+        <Chapters key={0} chapters={chapters} />
+
+        <div>
+          <div>인기 - {popularPoint}</div>
+          <div>코멘트 - {comments}</div>
+          <div>좋아요 - {likes}</div>
+        </div>
+      </div>
 
       <Images images={[imgList[(page - 1) * 2], imgList[(page - 1) * 2 + 1]]} />
     </div>

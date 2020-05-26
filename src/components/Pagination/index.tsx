@@ -1,32 +1,44 @@
-import React, { useCallback } from 'react'
-import { useParams, useHistory } from 'react-router-dom'
-import { Pagination } from 'antd'
-import { PaginationProps } from 'antd/lib/pagination'
-import styles from './style.module.css'
+import React from 'react'
+import { TableInstance } from 'react-table'
 
-type Props = Pick<PaginationProps, 'total'>
+type Props = {
+  current: number
+  total: number
+} & Partial<TableInstance>
 
-function PaginationWrapper({ total }: Props) {
-  const history = useHistory()
-  const { page = '1' } = useParams()
-  const handleChange = useCallback(
-    (page) => {
-      window.scrollTo(0, 0)
-      history.push(`/board/${page}`)
-    },
-    [history]
-  )
-
+function Pagination({
+  current,
+  total,
+  gotoPage,
+  previousPage,
+  nextPage,
+  canPreviousPage,
+  canNextPage,
+  pageCount,
+}: Props) {
   return (
-    <Pagination
-      current={parseInt(page, 10)}
-      total={total}
-      showSizeChanger={false}
-      pageSize={1}
-      onChange={handleChange}
-      className={styles.wrapper}
-    />
+    <div className="pagination">
+      <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+        {'<<'}
+      </button>
+      <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+        {'<'}
+      </button>
+      <button onClick={() => nextPage()} disabled={!canNextPage}>
+        {'>'}
+      </button>
+      <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+        {'>>'}
+      </button>
+
+      <span>
+        Page
+        <strong>
+          {current} of {total}
+        </strong>
+      </span>
+    </div>
   )
 }
 
-export default PaginationWrapper
+export default Pagination

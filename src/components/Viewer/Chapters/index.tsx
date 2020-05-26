@@ -1,5 +1,4 @@
 import React from 'react'
-import { Select } from 'antd'
 import { MangaDetail } from '../../../types'
 import { useParams, useHistory } from 'react-router-dom'
 
@@ -12,7 +11,7 @@ function Chapters({ chapters }: Props) {
   const { id } = useParams()
 
   return (
-    <Select
+    <select
       defaultValue={id}
       onChange={(value) => history.push(`/manga/${value}`)}
     >
@@ -20,12 +19,12 @@ function Chapters({ chapters }: Props) {
         const [label, value] = chapter
 
         return (
-          <Select.Option key={value} value={value}>
+          <option key={value} value={value}>
             {label}
-          </Select.Option>
+          </option>
         )
       })}
-    </Select>
+    </select>
   )
 }
 

@@ -1,8 +1,0 @@
-.wrapper {
-  display: flex;
-  flex-direction: row-reverse;
-}
-
-.img {
-  max-width: 50%;
-}

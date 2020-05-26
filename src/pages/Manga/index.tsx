@@ -1,10 +1,10 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useQuery } from 'react-query'
-import { Spin } from 'antd'
 import { getDetail } from '../../lib/rpc'
 import Viewer from '../../components/Viewer'
 import Alert from '../../components/Alert'
+import Spin from '../../components/Spin'
 
 function Manga() {
   const { id = '0' } = useParams()
