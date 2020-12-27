@@ -1,0 +1,16 @@
+.button {
+  position: absolute;
+  top: 0;
+  width: 20vw;
+  height: 100%;
+  opacity: 0;
+  z-index: 10;
+}
+
+.button:global(.is-next) {
+  left: 0;
+}
+
+.button:global(.is-prev) {
+  right: 0;
+}

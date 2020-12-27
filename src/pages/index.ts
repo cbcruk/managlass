@@ -1,2 +1,2 @@
-export { default as Board } from './Board'
-export { default as Manga } from './Manga'
+export { default as Update } from './Update'
+export { default as Comic } from './Comic'

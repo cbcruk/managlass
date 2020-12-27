@@ -1,0 +1,7 @@
+.wrapper {
+  opacity: 0;
+}
+
+:global(.is-active) .wrapper {
+  opacity: 1;
+}

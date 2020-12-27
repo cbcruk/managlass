@@ -1,0 +1,9 @@
+.wrapper {
+  position: absolute;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+:global(.is-active) .wrapper {
+  opacity: 1;
+}
