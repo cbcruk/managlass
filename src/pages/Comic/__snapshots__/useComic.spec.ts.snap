@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useComic 1`] = `
+Object {
+  "data": Object {
+    "bookmark": "(1/1)",
+    "chapters": Array [
+      "6344349",
+    ],
+    "imageList": Array [
+      "GZPmplOIna3h.jpeg",
+      "_ZodNy4isTeK.jpeg",
+      "ZkBnJQHcD0t5.jpeg",
+      "A8Zin0lBRsaE.jpeg",
+    ],
+    "title": "1화",
+  },
+  "isValidating": false,
+  "mutate": [Function],
+}
+`;

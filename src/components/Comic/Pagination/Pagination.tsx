@@ -9,6 +9,7 @@ function Pagination({ children }) {
         'swiper-pagination-fraction',
         styles.wrapper,
       ])}
+      data-testid="Pagination"
     >
       {children}
     </div>

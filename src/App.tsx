@@ -23,7 +23,7 @@ function App() {
         revalidateOnFocus: false,
       }}
     >
-      <IonApp>
+      <IonApp data-testid="App">
         <IonReactRouter>
           <IonRouterOutlet>
             <Route path="/update" component={Update} />

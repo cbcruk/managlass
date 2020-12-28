@@ -28,6 +28,7 @@ function Slides({ list }) {
 
           setIndex(activeIndex)
         }}
+        data-testid="Slides"
       >
         {list.map((src, index) => (
           <IonSlide key={index}>

@@ -6,7 +6,7 @@ import styles from './style.module.css'
 
 function List({ list }) {
   return (
-    <IonList>
+    <IonList data-testid="List">
       {list.map((item) => (
         <IonItem key={item.id} routerLink={`/comic/${item.id}`}>
           <IonThumbnail slot="start" className={styles.thumbnail}>

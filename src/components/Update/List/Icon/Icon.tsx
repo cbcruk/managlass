@@ -3,7 +3,7 @@ import styles from './style.module.css'
 
 function Icon({ name, label }) {
   return (
-    <span className={styles.wrapper}>
+    <span className={styles.wrapper} data-testid="Icon">
       <IonIcon icon={name} className={styles.icon} /> {label}
     </span>
   )
