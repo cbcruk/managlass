@@ -9,8 +9,10 @@
 
 .button:global(.is-next) {
   left: 0;
+  cursor: url('./viewer-next.svg') 20 20, pointer;
 }
 
 .button:global(.is-prev) {
   right: 0;
+  cursor: url('./viewer-prev.svg') 20 20, pointer;
 }
