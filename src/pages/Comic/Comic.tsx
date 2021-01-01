@@ -1,17 +1,14 @@
 import React from 'react'
-import { IonPage, IonContent } from '@ionic/react'
+import { IonPage, IonContent, IonSpinner } from '@ionic/react'
 import classNames from 'classnames'
 import { Slides, Header } from '../../components/Comic'
 import useComic from './useComic'
 import useControl from './useControl'
+import Spinner from '../../components/shared/Spinner'
 
 function Comic() {
-  const { data } = useComic()
+  const { data, isLoading } = useComic()
   const { isActive, handleActive } = useControl()
-
-  if (!data) {
-    return null
-  }
 
   return (
     <div
@@ -20,10 +17,16 @@ function Comic() {
       })}
     >
       <IonPage>
-        <Header />
-        <IonContent onClick={handleActive}>
-          <Slides list={data.imageList} />
-        </IonContent>
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <>
+            <Header />
+            <IonContent onClick={handleActive}>
+              <Slides list={data?.imageList ?? []} />
+            </IonContent>
+          </>
+        )}
       </IonPage>
     </div>
   )
