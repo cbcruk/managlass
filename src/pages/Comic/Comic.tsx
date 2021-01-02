@@ -1,10 +1,10 @@
 import React from 'react'
-import { IonPage, IonContent, IonSpinner } from '@ionic/react'
+import { IonPage, IonContent } from '@ionic/react'
 import classNames from 'classnames'
 import { Slides, Header } from '../../components/Comic'
+import Spinner from '../../components/shared/Spinner'
 import useComic from './useComic'
 import useControl from './useControl'
-import Spinner from '../../components/shared/Spinner'
 
 function Comic() {
   const { data, isLoading } = useComic()
@@ -21,9 +21,13 @@ function Comic() {
           <Spinner />
         ) : (
           <>
-            <Header />
-            <IonContent onClick={handleActive}>
-              <Slides list={data?.imageList ?? []} />
+            <Header title={data.title} chapters={data.chapters} />
+            <IonContent>
+              <Slides
+                list={data?.imageList ?? []}
+                chapters={data.chapters}
+                handleActive={handleActive}
+              />
             </IonContent>
           </>
         )}

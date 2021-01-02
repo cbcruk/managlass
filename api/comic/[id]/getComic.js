@@ -6,9 +6,10 @@ async function getComic(id) {
   const title = titleElement.childNodes[0].textContent
   const bookmark = titleElement.childNodes[2].textContent
   const selectElement = document.querySelector('select[name="wr_id"]')
-  const chapters = Array.from(selectElement.options).map(
-    (option) => option.value
-  )
+  const chapters = Array.from(selectElement.options).map((option) => ({
+    value: option.value,
+    label: option.label,
+  }))
   const imageList = document.body.innerHTML
     .match(/html_data\+='(.+)';/g)
     .map((d) => d.match(/html_data\+='(.+)';/)[1])

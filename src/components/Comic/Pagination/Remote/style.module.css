@@ -1,0 +1,25 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chapter {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-gap: 16px;
+}
+
+.chapter ion-router-link {
+  --color: var(--ion-text-color);
+}
+
+.skip {
+  --color: var(--ion-text-color);
+  font-size: 12px;
+}
+
+.skip ion-icon {
+  font-size: 12px;
+}

@@ -67,7 +67,7 @@
   --ion-font-family: 'Noto Sans KR', sans-serif;
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   body {
     --ion-color-primary: #428cff;
     --ion-color-primary-rgb: 66, 140, 255;
@@ -206,4 +206,4 @@
 
     --ion-card-background: #1e1e1e;
   }
-} */
+}

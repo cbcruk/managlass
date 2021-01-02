@@ -1,5 +1,9 @@
 .wrapper {
+  display: grid;
+  grid-gap: 16px;
   opacity: 0;
+  font-size: 12px;
+  z-index: 11;
 }
 
 :global(.is-active) .wrapper {

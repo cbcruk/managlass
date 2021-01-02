@@ -1,16 +1,12 @@
-import { useCallback, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { IonSlide, IonSlides } from '@ionic/react'
 import Nav from '../Nav'
-import Pagination from '../Pagination'
+import Pagination, { Progress, Remote } from '../Pagination'
 import styles from './style.module.css'
 
-function Slides({ list }) {
+function Slides({ list, chapters, handleActive }) {
   const slideRef = useRef(null)
   const [activeIndex, setIndex] = useState(0)
-  const handleSlide = useCallback(
-    (direction) => slideRef.current[direction](),
-    []
-  )
 
   return (
     <>
@@ -36,9 +32,10 @@ function Slides({ list }) {
           </IonSlide>
         ))}
       </IonSlides>
-      <Nav handleSlide={handleSlide} />
+      <Nav slideRef={slideRef} handleActive={handleActive} />
       <Pagination>
-        {activeIndex + 1}/{list.length}
+        <Remote chapters={chapters} slideRef={slideRef} />
+        <Progress activeIndex={activeIndex + 1} total={list.length} />
       </Pagination>
     </>
   )

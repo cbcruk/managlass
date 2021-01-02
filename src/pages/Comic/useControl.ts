@@ -5,7 +5,7 @@ function useControl() {
   const handleActive = useCallback((e) => {
     const target = e.target as HTMLElement
 
-    if (target.tagName !== 'BUTTON') {
+    if (target.tagName !== 'ION-BUTTON') {
       setActive((prev) => !prev)
     }
   }, [])

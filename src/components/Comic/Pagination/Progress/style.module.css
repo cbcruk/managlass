@@ -1,0 +1,10 @@
+.wrapper {
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto 1fr;
+  grid-gap: 50px;
+}
+
+.bar {
+  border-radius: 4px;
+}
