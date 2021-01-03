@@ -19,6 +19,7 @@ function useComic() {
 
   return {
     data,
+    error,
     mutate,
     isLoading: !data && !error,
     isValidating,
