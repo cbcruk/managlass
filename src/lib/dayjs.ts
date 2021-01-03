@@ -5,10 +5,17 @@ import 'dayjs/locale/ko'
 dayjs.locale('ko')
 dayjs.extend(relativeTime)
 
-const year = dayjs().year()
-
 export function getTimeFromNow(time) {
-  return dayjs(`${year}-${time}`).fromNow()
+  const now = dayjs()
+  const year = now.year()
+  const date = dayjs(`${year}-${time}`)
+  const isBefore = now.isBefore(date)
+
+  if (isBefore) {
+    return dayjs(`${year - 1}-${time}`).fromNow()
+  } else {
+    return date.fromNow()
+  }
 }
 
 export default dayjs
