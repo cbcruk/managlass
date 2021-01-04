@@ -8,7 +8,11 @@ function List({ list }) {
   return (
     <IonList data-testid="List">
       {list.map((item) => (
-        <IonItem key={item.id} routerLink={`/comic/${item.id}`}>
+        <IonItem
+          key={item.id}
+          routerLink={`/comic/${item.id}`}
+          routerDirection="none"
+        >
           <IonThumbnail slot="start" className={styles.thumbnail}>
             <img src={item.thumbnail} alt="" loading="lazy" />
           </IonThumbnail>
