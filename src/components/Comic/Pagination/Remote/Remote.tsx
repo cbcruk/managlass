@@ -10,12 +10,12 @@ function Remote({ chapters, slideRef }) {
     <div className={styles.wrapper}>
       <div className={styles.chapter}>
         {next && (
-          <IonRouterLink routerLink={`/comic/${next.value}`}>
+          <IonRouterLink href={`/comic/${next.value}`} className={styles.link}>
             <IonIcon icon={chevronBack} /> 다음 화
           </IonRouterLink>
         )}
         {prev && (
-          <IonRouterLink routerLink={`/comic/${prev.value}`}>
+          <IonRouterLink href={`/comic/${prev.value}`} className={styles.link}>
             이전 화 <IonIcon icon={chevronForward} />
           </IonRouterLink>
         )}

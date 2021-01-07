@@ -11,8 +11,11 @@
   grid-gap: 16px;
 }
 
-.chapter ion-router-link {
-  --color: var(--ion-text-color);
+.link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--ion-text-color);
 }
 
 .skip {
