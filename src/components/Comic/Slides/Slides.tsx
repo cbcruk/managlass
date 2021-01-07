@@ -1,12 +1,53 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { IonSlide, IonSlides } from '@ionic/react'
 import Nav from '../Nav'
 import Pagination, { Progress, Remote } from '../Pagination'
 import styles from './style.module.css'
+import { Promise, mapSeries } from 'bluebird'
+import { useLocation } from 'react-router-dom'
+
+Promise.config({ cancellation: true })
 
 function Slides({ list, chapters, handleActive }) {
+  const location = useLocation()
   const slideRef = useRef(null)
+  const promise = useRef(null)
+  const image = useRef(null)
   const [activeIndex, setIndex] = useState(0)
+  const [isLoaded, setLoaded] = useState(false)
+
+  useEffect(() => {
+    image.current = new Image()
+    promise.current = mapSeries(
+      list,
+      (src: string) =>
+        new Promise((resolve, reject) => {
+          const img = image.current
+
+          img.src = src
+          img.onload = resolve
+          img.onerror = reject
+        })
+    )
+
+    promise.current.then(() => {
+      setLoaded(true)
+    })
+
+    return () => {
+      promise.current.cancel()
+    }
+  }, [list])
+
+  useEffect(() => {
+    if (location.pathname === '/update') {
+      promise.current.cancel()
+    }
+  }, [location])
+
+  if (!isLoaded) {
+    return null
+  }
 
   return (
     <>
