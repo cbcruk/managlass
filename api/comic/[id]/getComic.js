@@ -17,7 +17,7 @@ async function getComic(id) {
     .split('.')
     .map((d) => String.fromCharCode(parseInt(d, 16)))
     .join('')
-    .match(/<img(.+)\/>/g)
+    .match(/<img[^>]* src="([^"]*)"[^>]*>/g)
     .filter((d) => d.includes('loading-image'))
     .map((d) => d.match(/data-\w+="(.+)"/)[1])
 
