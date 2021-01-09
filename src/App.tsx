@@ -3,7 +3,7 @@ import { Route, Redirect } from 'react-router-dom'
 import { IonApp, IonRouterOutlet } from '@ionic/react'
 import { IonReactRouter } from '@ionic/react-router'
 import { SWRConfig } from 'swr'
-import { Comic, Update } from './pages'
+import { Comic, Update, Work } from './pages'
 import '@ionic/react/css/core.css'
 import '@ionic/react/css/normalize.css'
 import '@ionic/react/css/structure.css'
@@ -28,6 +28,7 @@ function App() {
           <IonRouterOutlet>
             <Route path="/update" component={Update} />
             <Route path="/comic/:id" component={Comic} />
+            <Route path="/work/:id" component={Work} />
             <Redirect exact from="/" to="/update" />
           </IonRouterOutlet>
         </IonReactRouter>

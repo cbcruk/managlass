@@ -3,6 +3,11 @@ import getDocument from '../../update/getDocument'
 async function getComic(id) {
   const document = await getDocument(`/comic/${id}`)
   const titleElement = document.querySelector('.toon-title')
+  const navElement = document.querySelector('.toon-nav')
+  const workId = navElement
+    .querySelector('a:last-of-type')
+    .getAttribute('href')
+    .match(/comic\/(\d+)/)[1]
   const title = titleElement.childNodes[0].textContent
   const bookmark = titleElement.childNodes[2].textContent
   const selectElement = document.querySelector('select[name="wr_id"]')
@@ -23,6 +28,7 @@ async function getComic(id) {
 
   return {
     title,
+    workId,
     bookmark,
     chapters,
     imageList,

@@ -1,7 +1,7 @@
 import { IonThumbnail, IonItem, IonLabel, IonList } from '@ionic/react'
 import { chatbox, eye, heart, time } from 'ionicons/icons'
 import { getTimeFromNow } from '../../../lib/dayjs'
-import Icon from './Icon'
+import Icon from '../../shared/Icon'
 import styles from './style.module.css'
 
 function List({ list }) {

@@ -1,14 +1,16 @@
 import {
   IonBackButton,
+  IonButton,
   IonButtons,
   IonHeader,
+  IonIcon,
   IonTitle,
   IonToolbar,
 } from '@ionic/react'
-import Popover from './Popover'
+import { fileTray } from 'ionicons/icons'
 import styles from './style.module.css'
 
-function Header({ title, chapters }) {
+function Header({ title, workId }) {
   return (
     <IonHeader className={styles.wrapper} data-testid="Header">
       <IonToolbar>
@@ -17,7 +19,9 @@ function Header({ title, chapters }) {
           <IonBackButton defaultHref="/update" />
         </IonButtons>
         <IonButtons slot="end">
-          <Popover chapters={chapters} />
+          <IonButton routerLink={`/work/${workId}`} routerDirection="none">
+            <IonIcon icon={fileTray} />
+          </IonButton>
         </IonButtons>
       </IonToolbar>
     </IonHeader>

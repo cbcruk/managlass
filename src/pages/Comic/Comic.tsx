@@ -28,7 +28,7 @@ function Comic() {
           />
         ) : (
           <>
-            <Header title={data.title} chapters={data.chapters} />
+            <Header title={data.title} workId={data.workId} />
             <IonContent>
               <Slides
                 list={data?.imageList ?? []}
