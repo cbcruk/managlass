@@ -20,8 +20,8 @@ async function getWork(id) {
     const detailsElem = item.querySelector('.item-details')
     const ratingElem = item.querySelector('.wr-star')
     const id = subjectElem.getAttribute('href').match(/\/comic\/(\d+)/)[1]
-    const title = subjectElem.childNodes[2].textContent.trim()
-    const comments = subjectElem.querySelector('.count').textContent.trim()
+    const title = subjectElem.textContent.trim().replace(/^\d+|\d+$/g, '').trim()
+    const comments = subjectElem.querySelector('.count')?.textContent?.trim() ?? 0
     const createdAt = detailsElem.children[0].textContent.trim()
     const views = detailsElem.children[1].textContent.trim().replace(/,/g, '')
     const likes = detailsElem.children[2].textContent.trim()
