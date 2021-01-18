@@ -10,7 +10,9 @@ function Work() {
   return (
     <IonPage>
       {isLoading ? (
-        <Spinner />
+        <IonContent>
+          <Spinner />
+        </IonContent>
       ) : (
         <>
           <Header title={data.meta.title} />

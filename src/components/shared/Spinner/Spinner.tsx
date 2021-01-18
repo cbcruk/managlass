@@ -4,7 +4,7 @@ import styles from './style.module.css'
 
 function Spinner({ className = '' }) {
   return (
-    <div className={classNames([styles.wrapper, className])}>
+    <div className={classNames([styles.wrapper, 'ion-padding-top', className])}>
       <IonSpinner name="crescent" />
     </div>
   )

@@ -2,7 +2,7 @@ import uniqBy from 'lodash/uniqBy'
 import { useSWRInfinite } from 'swr'
 
 function useList() {
-  const { data, isValidating, mutate, size, setSize } = useSWRInfinite(
+  const { data, error, isValidating, mutate, size, setSize } = useSWRInfinite(
     (page) => `/api/update?page=${page + 1}`
   )
   const list = data ? uniqBy([].concat(...data), 'id') : []
@@ -11,6 +11,7 @@ function useList() {
     list,
     mutate,
     isValidating,
+    isLoading: !data && !error,
     size,
     setSize,
   }

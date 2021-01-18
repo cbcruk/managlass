@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import { IonApp, IonRouterOutlet } from '@ionic/react'
+import { IonApp, IonRouterOutlet, setupConfig } from '@ionic/react'
 import { IonReactRouter } from '@ionic/react-router'
 import { SWRConfig } from 'swr'
 import { Comic, Update, Work } from './pages'
@@ -15,6 +15,10 @@ import '@ionic/react/css/text-transformation.css'
 import '@ionic/react/css/flex-utils.css'
 import '@ionic/react/css/display.css'
 import './theme/variables.css'
+
+setupConfig({
+  spinner: 'crescent',
+})
 
 function App() {
   return (

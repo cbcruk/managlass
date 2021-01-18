@@ -17,15 +17,18 @@ function Comic() {
       })}
     >
       <IonPage>
-        {isLoading ? (
-          <Spinner />
-        ) : error ? (
+        {error && (
           <IonToast
             isOpen
             color="danger"
             message="네트워크에 문제가 생겼습니다. 새로고침 버튼을 눌러주세요."
             duration={5000}
           />
+        )}
+        {isLoading ? (
+          <IonContent>
+            <Spinner />
+          </IonContent>
         ) : (
           <>
             <Header title={data.title} workId={data.workId} />
