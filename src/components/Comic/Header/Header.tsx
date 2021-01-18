@@ -19,7 +19,7 @@ function Header({ title, workId }) {
           <IonBackButton defaultHref="/update" />
         </IonButtons>
         <IonButtons slot="end">
-          <IonButton routerLink={`/work/${workId}`} routerDirection="none">
+          <IonButton routerLink={`/work/${workId}`}>
             <IonIcon icon={fileTray} />
           </IonButton>
         </IonButtons>

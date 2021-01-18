@@ -25,11 +25,7 @@ function List({ meta, list }) {
         </IonChip>
       </IonListHeader>
       {list.map((item) => (
-        <IonItem
-          key={item.id}
-          routerLink={`/comic/${item.id}`}
-          routerDirection="none"
-        >
+        <IonItem key={item.id} routerLink={`/comic/${item.id}`}>
           <IonLabel>
             <h2>{item.title}</h2>
             <p>
