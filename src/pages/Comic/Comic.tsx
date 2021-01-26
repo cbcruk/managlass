@@ -26,7 +26,9 @@ function Comic() {
           />
         )}
         {isLoading ? (
-          <IonContent>
+          <IonContent style={{
+            '--overflow': 'hidden'
+          }}>
             <Spinner />
           </IonContent>
         ) : (

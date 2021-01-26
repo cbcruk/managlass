@@ -1,4 +1,3 @@
-import { IonButton } from '@ionic/react'
 import classNames from 'classnames'
 import { useCallback } from 'react'
 import styles from './style.module.css'
@@ -11,18 +10,20 @@ function Nav({ slideRef, handleActive }) {
 
   return (
     <div className={styles.wrapper} onClick={handleActive}>
-      <IonButton
+      <button
+        type="button"
         className={classNames([styles.button, 'is-next'])}
         onClick={() => handleSlide('slideNext')}
       >
         다음
-      </IonButton>
-      <IonButton
+      </button>
+      <button 
+        type="button"
         className={classNames([styles.button, 'is-prev'])}
         onClick={() => handleSlide('slidePrev')}
       >
         이전
-      </IonButton>
+      </button>
     </div>
   )
 }
