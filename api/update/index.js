@@ -1,4 +1,4 @@
-import getList from './getList'
+import getList from '../../lib/getList'
 
 async function update({ query }, res) {
   const page = query.page || 1

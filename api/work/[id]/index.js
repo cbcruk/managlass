@@ -1,4 +1,4 @@
-import getWork from './getWork'
+import getWork from "../../../lib/getWork"
 
 async function work({ query }, res) {
   const data = await getWork(query.id)
