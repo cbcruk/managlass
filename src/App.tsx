@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { IonApp, IonRouterOutlet, setupConfig } from '@ionic/react'
 import { IonReactRouter } from '@ionic/react-router'
-import { SWRConfig } from 'swr'
-import { Comic, Update, Work } from './pages'
+import { Comic, Scrap, Update, Work } from './pages'
+import Spinner from './components/shared/Spinner'
+import Tabs from './components/shared/Tabs'
 import '@ionic/react/css/core.css'
 import '@ionic/react/css/normalize.css'
 import '@ionic/react/css/structure.css'
@@ -22,22 +23,21 @@ setupConfig({
 
 function App() {
   return (
-    <SWRConfig
-      value={{
-        revalidateOnFocus: false,
-      }}
-    >
-      <IonApp data-testid="App">
-        <IonReactRouter>
-          <IonRouterOutlet>
-            <Route path="/update" component={Update} />
-            <Route path="/comic/:id" component={Comic} />
-            <Route path="/work/:id" component={Work} />
-            <Redirect exact from="/" to="/update" />
-          </IonRouterOutlet>
-        </IonReactRouter>
-      </IonApp>
-    </SWRConfig>
+    <IonApp data-testid="App">
+      <IonReactRouter>
+        <Suspense fallback={<Spinner />}>
+          <Tabs>
+            <IonRouterOutlet>
+              <Route path="/update" exact component={Update} />
+              <Route path="/scrap" exact component={Scrap} />
+              <Route path="/comic/:id" component={Comic} />
+              <Route path="/work/:id" component={Work} />
+              <Redirect exact from="/" to="/update" />
+            </IonRouterOutlet>
+          </Tabs>
+        </Suspense>
+      </IonReactRouter>
+    </IonApp>
   )
 }
 

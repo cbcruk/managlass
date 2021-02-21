@@ -1,0 +1,3 @@
+.bookmark:global(.is-checked) {
+  color: var(--ion-color-success);
+}

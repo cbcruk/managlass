@@ -15,7 +15,7 @@ function Work() {
         </IonContent>
       ) : data ? (
         <>
-          <Header title={data.meta.title} />
+          <Header meta={data.meta} />
           <IonContent>
             <List meta={data.meta} list={data.list} />
           </IonContent>

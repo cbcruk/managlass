@@ -1,0 +1,6 @@
+.cover {
+  width: 100%;
+  aspect-ratio: 900/583;
+  object-fit: cover;
+  object-position: top;
+}
