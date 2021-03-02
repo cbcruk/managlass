@@ -1,4 +1,4 @@
-import getComic from '../../../lib/getComic'
+import getComic from '../../../lib/query/getComic'
 
 async function comic({ query }, res) {
   const data = await getComic(query.id)
