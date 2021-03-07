@@ -14,7 +14,10 @@ function List({ list }) {
       {list.map(({ id, fields }) => {
         return (
           <IonCard key={id} routerLink={`/work/${fields.id}`}>
-            <img src={fields.cover} alt="" className={styles.cover} />
+            {fields.cover && (
+              <img src={fields.cover} alt="" className={styles.cover} />
+            )}
+
             <IonCardHeader>
               <IonCardSubtitle>
                 {fields.author}
