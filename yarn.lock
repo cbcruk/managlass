@@ -1367,12 +1367,20 @@
     linkedom "^0.4.31"
     tslib "^2.0.0"
 
-"@cbcruk/firebase@^0.0.1":
+"@cbcruk/firebase-admin@^0.0.1":
   version "0.0.1"
-  resolved "https://npm.pkg.github.com/download/@cbcruk/firebase/0.0.1/9d566b09ee9f9c5f2c3f0fb7463bb327350796f8209e094637269f9169cfd8fb#18237dfc87f82723e32ea079273183b22e2913af"
-  integrity sha1-GCN9/If4JyPjLqB5JzGDsi4pE68=
+  resolved "https://npm.pkg.github.com/download/@cbcruk/firebase-admin/0.0.1/652ad2e4989a6568da91dbfb4e2d0ab9896df98c27acd1d5de7eee537559587f#0dce681bcbf75ec09f7f8d34d19c5ad2130a84d9"
+  integrity sha512-UrEVuGUNAu/9e8Rm/5MT/Js/TWyYsn+yMDyWAWIWlxq7nNkfEwgge99ZlNJIYATKWipQzp+vY2nf2szBFmCkhg==
   dependencies:
     firebase-admin "^9.4.2"
+    tslib "^2.0.0"
+
+"@cbcruk/firebase-app@^0.0.2":
+  version "0.0.2"
+  resolved "https://npm.pkg.github.com/download/@cbcruk/firebase-app/0.0.2/c527155b8f1ec59786a5ca692289a04979cff0b6cab47c48de6014d929fe565e#e1f36ca40be81bf8f8110925c5bec65576e8106d"
+  integrity sha512-J5yxvQGY06f/pJ5BYEzh6WWI3SPGcEi899ETM0wmMSp9PnCzyyuq6w5BXAkSFHFlKD869io2Q7KVVQl6T1Bdog==
+  dependencies:
+    firebase "^8.2.9"
     tslib "^2.0.0"
 
 "@cbcruk/utils@^0.0.7":
@@ -4914,11 +4922,6 @@ dayjs@^1.10.4:
   version "1.10.4"
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.4.tgz#8e544a9b8683f61783f570980a8a80eaf54ab1e2"
   integrity sha512-RI/Hh4kqRc1UKLOAf/T5zdMMX5DQIlDxwUe3wSyMMnEbGunnpENCdbUgM+dW7kXidZqCttBrmw7BhN4TMddkCw==
-
-dayjs@^1.9.7:
-  version "1.9.7"
-  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.9.7.tgz#4b260bb17dceed2d5f29038dfee03c65a6786fc0"
-  integrity sha512-IC877KBdMhBrCfBfJXHQlo0G8keZ0Opy7YIIq5QKtUbCuHMzim8S4PyiVK4YmihI3iOF9lhfUBW4AQWHTR5WHA==
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
   version "2.6.9"

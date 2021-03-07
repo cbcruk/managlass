@@ -1,7 +1,7 @@
+import { getIdToken } from '@cbcruk/firebase-app'
 import { useAtom } from 'jotai'
 import { useCallback } from 'react'
 import { fetchBookmarkAtom } from '../../../atom/bookmark'
-import { getIdToken } from '../../../lib/firebase'
 
 function useBookmark({ id, meta }) {
   const [bookmarks] = useAtom(fetchBookmarkAtom)

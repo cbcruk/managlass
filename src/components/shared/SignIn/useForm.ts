@@ -1,7 +1,7 @@
 import { useAtom } from 'jotai'
 import { useCallback, useRef } from 'react'
 import { userAtom } from '../../../atom/auth'
-import firebaseApp from '../../../lib/firebase'
+import firebaseApp from '../../../lib/firebaseApp'
 
 function useForm() {
   const [, setUser] = useAtom(userAtom)
