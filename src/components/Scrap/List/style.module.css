@@ -1,6 +1,19 @@
+@media (min-width: 768px) {
+  .list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 16px;
+    padding: 16px !important;
+  }
+
+  .card {
+    margin: 0;
+  }
+}
+
 .cover {
   width: 100%;
-  aspect-ratio: 900/583;
+  aspect-ratio: 1/1;
   object-fit: cover;
   object-position: top;
 }

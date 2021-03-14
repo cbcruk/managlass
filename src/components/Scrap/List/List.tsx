@@ -10,10 +10,14 @@ import styles from './style.module.css'
 
 function List({ list }) {
   return (
-    <IonList>
+    <IonList className={styles.list}>
       {list.map(({ id, fields }) => {
         return (
-          <IonCard key={id} routerLink={`/work/${fields.id}`}>
+          <IonCard
+            key={id}
+            routerLink={`/work/${fields.id}`}
+            className={styles.card}
+          >
             {fields.cover && (
               <img src={fields.cover} alt="" className={styles.cover} />
             )}
