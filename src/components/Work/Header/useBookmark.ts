@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 import { fetchBookmarkAtom } from '../../../atom/bookmark'
 
 function useBookmark({ id, meta }) {
-  const [bookmarks] = useAtom(fetchBookmarkAtom)
+  const [bookmarks, setBookmarks] = useAtom(fetchBookmarkAtom)
   const handleBookmark = useCallback(async () => {
     const token = await getIdToken()
 
@@ -15,7 +15,9 @@ function useBookmark({ id, meta }) {
         Authorization: token,
       },
     })
-  }, [id, meta])
+
+    setBookmarks(id)
+  }, [id, meta, setBookmarks])
   const isBookmarked = bookmarks.includes(id)
 
   return {
