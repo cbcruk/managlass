@@ -1,4 +1,3 @@
-import React from 'react'
 import { IonPage, IonContent, IonToast } from '@ionic/react'
 import classNames from 'classnames'
 import { Slides, Header } from '../../components/Comic'
@@ -26,9 +25,11 @@ function Comic() {
           />
         )}
         {isLoading ? (
-          <IonContent style={{
-            '--overflow': 'hidden'
-          }}>
+          <IonContent
+            style={{
+              '--overflow': 'hidden',
+            }}
+          >
             <Spinner />
           </IonContent>
         ) : (

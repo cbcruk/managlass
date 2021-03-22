@@ -1,7 +1,9 @@
 import { IonAlert } from '@ionic/react'
+import { useHistory } from 'react-router'
 import useForm from './useForm'
 
 function SignIn() {
+  const history = useHistory()
   const { handleInput, handleSubmit } = useForm()
 
   return (
@@ -31,6 +33,9 @@ function SignIn() {
         {
           text: 'Cancel',
           role: 'cancel',
+          handler() {
+            history.goBack()
+          },
         },
         {
           text: 'Ok',

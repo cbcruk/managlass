@@ -2,7 +2,6 @@ import { IonContent, IonPage } from '@ionic/react'
 import { useAtom } from 'jotai'
 import { fetchUserAtom } from '../../atom/auth'
 import { Header, List } from '../../components/Scrap'
-import SignIn from '../../components/shared/SignIn'
 import useScrap from './useScrap'
 
 function Scrap() {
@@ -12,10 +11,7 @@ function Scrap() {
   return (
     <IonPage>
       <Header />
-      <IonContent>
-        {!user && <SignIn />}
-        {data && <List list={data} />}
-      </IonContent>
+      <IonContent>{data && <List list={data} />}</IonContent>
     </IonPage>
   )
 }

@@ -1,10 +1,11 @@
-import React, { Suspense } from 'react'
+import { Suspense } from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { IonApp, IonRouterOutlet, setupConfig } from '@ionic/react'
 import { IonReactRouter } from '@ionic/react-router'
 import { Comic, Scrap, Update, Work } from './pages'
 import Spinner from './components/shared/Spinner'
 import Tabs from './components/shared/Tabs'
+import withProtected from './components/shared/Protected/withProtected'
 import '@ionic/react/css/core.css'
 import '@ionic/react/css/normalize.css'
 import '@ionic/react/css/structure.css'
@@ -29,8 +30,8 @@ function App() {
           <Tabs>
             <IonRouterOutlet>
               <Route path="/update" exact component={Update} />
-              <Route path="/scrap" exact component={Scrap} />
-              <Route path="/comic/:id" component={Comic} />
+              <Route path="/scrap" exact component={withProtected(Scrap)} />
+              <Route path="/comic/:id" component={withProtected(Comic)} />
               <Route path="/work/:id" component={Work} />
               <Redirect exact from="/" to="/update" />
             </IonRouterOutlet>
