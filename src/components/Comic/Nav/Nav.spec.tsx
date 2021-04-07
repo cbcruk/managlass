@@ -4,18 +4,31 @@ import Nav from './Nav'
 describe('Nav', () => {
   it('base', () => {
     const spy = jest.fn()
-    const { getByText } = render(<Nav handleSlide={spy} />)
+    const spyNext = jest.fn()
+    const spyPrev = jest.fn()
+    const { getByTestId } = render(
+      <Nav
+        slideRef={{
+          current: {
+            slideNext: spyNext,
+            slidePrev: spyPrev,
+          },
+        }}
+        handleActive={spy}
+      />
+    )
 
-    const next = getByText('다음')
+    const nav = getByTestId('Nav')
+    const next = getByTestId('Nav-next')
+    const prev = getByTestId('Nav-prev')
+
+    fireEvent.click(nav)
+    expect(nav).toBeInTheDocument()
+    expect(spy).toHaveBeenCalled()
 
     fireEvent.click(next)
-    expect(next).toBeInTheDocument()
-    expect(spy).toHaveBeenCalledWith('slideNext')
-
-    const prev = getByText('이전')
-
     fireEvent.click(prev)
-    expect(prev).toBeInTheDocument()
-    expect(spy).toHaveBeenCalledWith('slidePrev')
+    expect(spyNext).toHaveBeenCalled()
+    expect(spyPrev).toHaveBeenCalled()
   })
 })

@@ -8,7 +8,9 @@ test('useControl', () => {
 
   act(() => {
     result.current.handleActive({
-      target: '',
+      target: {
+        tagName: 'DIV'
+      },
     })
   })
 

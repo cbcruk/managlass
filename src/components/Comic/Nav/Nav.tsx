@@ -9,17 +9,19 @@ function Nav({ slideRef, handleActive }) {
   )
 
   return (
-    <div className={styles.wrapper} onClick={handleActive}>
+    <div className={styles.wrapper} data-testid="Nav" onClick={handleActive}>
       <button
         type="button"
         className={classNames([styles.button, 'is-next'])}
+        data-testid="Nav-next"
         onClick={() => handleSlide('slideNext')}
       >
         다음
       </button>
-      <button 
+      <button
         type="button"
         className={classNames([styles.button, 'is-prev'])}
+        data-testid="Nav-prev"
         onClick={() => handleSlide('slidePrev')}
       >
         이전
