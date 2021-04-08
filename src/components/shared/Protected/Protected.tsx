@@ -1,9 +1,8 @@
-import { useAtom } from 'jotai'
-import { fetchUserAtom } from '../../../atom/auth'
 import SignIn from '../SignIn'
+import useUser from './useUser'
 
 function Protected({ children }) {
-  const [user] = useAtom(fetchUserAtom)
+  const user = useUser()
 
   if (!user) {
     return <SignIn />
