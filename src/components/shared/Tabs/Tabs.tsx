@@ -6,15 +6,19 @@ import {
   IonTabs,
 } from '@ionic/react'
 import { newspaper, book } from 'ionicons/icons'
+import * as React from 'react'
 import { useRouteMatch } from 'react-router'
 
-function Tabs({ children }) {
-  const match = useRouteMatch(['/scrap', '/update'])
+export interface TabsProps {
+  isExact: boolean
+  children?: React.ReactNode
+}
 
+export function View({ isExact, children }: TabsProps) {
   return (
     <IonTabs>
       {children}
-      {match?.isExact ? (
+      {isExact ? (
         <IonTabBar slot="bottom">
           <IonTabButton tab="tab1" href="/update">
             <IonLabel>최신화</IonLabel>
@@ -30,6 +34,12 @@ function Tabs({ children }) {
       )}
     </IonTabs>
   )
+}
+
+function Tabs(props) {
+  const match = useRouteMatch(['/scrap', '/update'])
+
+  return <View isExact={match?.isExact} {...props} />
 }
 
 export default Tabs

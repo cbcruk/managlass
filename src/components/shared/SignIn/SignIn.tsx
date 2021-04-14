@@ -1,11 +1,15 @@
 import { IonAlert } from '@ionic/react'
+import { useCallback } from 'react'
 import { useHistory } from 'react-router'
 import useForm from './useForm'
 
-function SignIn() {
-  const history = useHistory()
-  const { handleInput, handleSubmit } = useForm()
+export interface SignInProps {
+  onInput: ReturnType<typeof useForm>['handleInput']
+  onSubmit: ReturnType<typeof useForm>['handleSubmit']
+  onCancel(): void
+}
 
+export function View({ onInput, onCancel, onSubmit }: SignInProps) {
   return (
     <IonAlert
       isOpen
@@ -17,7 +21,7 @@ function SignIn() {
           placeholder: '이메일',
           attributes: {
             name: 'email',
-            onInput: handleInput,
+            onInput,
           },
         },
         {
@@ -25,7 +29,7 @@ function SignIn() {
           placeholder: '비밀번호',
           attributes: {
             name: 'password',
-            onInput: handleInput,
+            onInput,
           },
         },
       ]}
@@ -34,14 +38,28 @@ function SignIn() {
           text: 'Cancel',
           role: 'cancel',
           handler() {
-            history.goBack()
+            onCancel()
           },
         },
         {
           text: 'Ok',
-          handler: handleSubmit,
+          handler: onSubmit,
         },
       ]}
+    />
+  )
+}
+
+function SignIn() {
+  const history = useHistory()
+  const handleCancel = useCallback(() => history.goBack(), [history])
+  const { handleInput, handleSubmit } = useForm()
+
+  return (
+    <View
+      onInput={handleInput}
+      onCancel={handleCancel}
+      onSubmit={handleSubmit}
     />
   )
 }
