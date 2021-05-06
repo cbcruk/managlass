@@ -70,7 +70,7 @@ function Slides({ list, chapters, handleActive }) {
       >
         {list.map((src, index) => (
           <IonSlide key={index}>
-            <img src={src} alt="" />
+            {activeIndex === index && <img src={src} alt="" />}
           </IonSlide>
         ))}
       </IonSlides>
